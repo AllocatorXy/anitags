@@ -11,8 +11,8 @@
 		padding: 0;
 	}
 	div{
-		width: 200px;
-		height: 200px;
+		width: 150px;
+		height: 150px;
 		background-color: #666;
 		position: relative;
 		float: left;
@@ -23,8 +23,8 @@
 		height: 0;
 		background-color: #f00;
 		position: absolute;
-		left: 100px;
-		top: 100px;
+		left: 85px;
+		top: 85px;
 		display: none;
 		opacity: 0;
 		filter: alpha(opacity=0);
@@ -34,36 +34,33 @@
 	<div><p></p></div>
 	<div><p></p></div>
 	<div><p></p></div>
-	<div><p></p></div>
-	<div><p></p></div>
-	<div><p></p></div>
 </body>
 <script type="text/javascript">
 $(document).ready(function() {
-	// 前面俩
+	// 前面
+	$('div:lt(1)').hover(function() {
+		$(this.children[0]).show();
+		$(this.children[0]).stop(true, true).animate({ opacity: 1, width: 50, height: 50, marginLeft: '-25%', marginTop: '-25%' }, 500);
+	}, function () {
+        // 这里不停动画，鼠标狂晃标签就不会消失了
+		$(this.children[0]).animate({ opacity: 0, width: 0, height: 0, marginLeft: 0, marginTop: 0 }, 500, function () {
+			$(this.children[0]).hide();
+		});
+	});
+	// 中间
 	$('div:lt(2)').hover(function() {
 		$(this.children[0]).show();
-		$(this.children[0]).stop(true, true).animate({ opacity: 1, width: 100, height: 100, marginLeft: '-25%', marginTop: '-25%' }, 500);
+		$(this.children[0]).stop(true).animate({ opacity: 1, width: 50, height: 50, marginLeft: '-25%', marginTop: '-25%' }, 500);
 	}, function () {
         // 这里不停动画，鼠标狂晃标签就不会消失了
 		$(this.children[0]).animate({ opacity: 0, width: 0, height: 0, marginLeft: 0, marginTop: 0 }, 500, function () {
 			$(this.children[0]).hide();
 		});
 	});
-	// 中间俩
-	$('div:lt(4)').hover(function() {
+	// 最后
+	$('div:eq(2)').hover(function() {
 		$(this.children[0]).show();
-		$(this.children[0]).stop(true).animate({ opacity: 1, width: 100, height: 100, marginLeft: '-25%', marginTop: '-25%' }, 500);
-	}, function () {
-        // 这里不停动画，鼠标狂晃标签就不会消失了
-		$(this.children[0]).animate({ opacity: 0, width: 0, height: 0, marginLeft: 0, marginTop: 0 }, 500, function () {
-			$(this.children[0]).hide();
-		});
-	});
-	// 最后俩
-	$('div:gt(3)').hover(function() {
-		$(this.children[0]).show();
-		$(this.children[0]).stop().animate({ opacity: 1, width: 100, height: 100, marginLeft: '-25%', marginTop: '-25%' }, 500);
+		$(this.children[0]).stop().animate({ opacity: 1, width: 50, height: 50, marginLeft: '-25%', marginTop: '-25%' }, 500);
 	}, function () {
         // 这里不停动画，鼠标狂晃标签就不会消失了
 		$(this.children[0]).stop().animate({ opacity: 0, width: 0, height: 0, marginLeft: 0, marginTop: 0 }, 500, function () {
