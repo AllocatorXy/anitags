@@ -17,6 +17,13 @@
 		position: relative;
 		float: left;
 		margin-right: 10px;
+		border-radius: 20%;
+	}
+	#d2 {
+		background-color: #094;
+	}
+	#d3 {
+		background-color: #0094FF;
 	}
 	p{
 		width: 0;
@@ -27,18 +34,19 @@
 		top: 85px;
 		display: none;
 		opacity: 0;
+		border-radius: 20%;
 		filter: alpha(opacity=0);
 	}
 </style>
 <body>
-	<div><p></p></div>
-	<div><p></p></div>
-	<div><p></p></div>
+	<div id="d1"><p></p></div>
+	<div id="d2"><p></p></div>
+	<div id="d3"><p></p></div>
 </body>
 <script type="text/javascript">
 $(document).ready(function() {
 	// 前面
-	$('div:lt(1)').hover(function() {
+	$('div:eq(0)').hover(function() {
 		$(this.children[0]).show();
 		$(this.children[0]).stop(true, true).animate({ opacity: 1, width: 50, height: 50, marginLeft: '-25%', marginTop: '-25%' }, 500);
 	}, function () {
@@ -48,7 +56,7 @@ $(document).ready(function() {
 		});
 	});
 	// 中间
-	$('div:lt(2)').hover(function() {
+	$('div:eq(1)').hover(function() {
 		$(this.children[0]).show();
 		$(this.children[0]).stop(true).animate({ opacity: 1, width: 50, height: 50, marginLeft: '-25%', marginTop: '-25%' }, 500);
 	}, function () {
